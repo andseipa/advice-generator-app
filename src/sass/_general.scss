@@ -1,11 +1,12 @@
 *,
 *::before,
 *::after {
-  transition: all 150ms ease-in-out; // Cheapskate
+  transition: all 150ms ease-in-out; // Cheapskate animation
 }
 
 body {
   min-height: 100vh;
+  padding: 0 15px;
   background: var(--clr-neutral-800);
   display: flex;
   align-items: center;
@@ -28,16 +29,18 @@ body {
 
   --clr-gradient: radial-gradient(circle at top, #232a34, #181e27);
 
-  // --box-shadow: 30px 50px 80px var(--clr-accent-400)
   --box-shadow: 30px 50px 80px #00000020;
   --hover-glow: 0 0 35px hsla(150, 100%, 66%, 0.8);
 
   --border-radius: 15px;
-  --padding: 48px;
+  --padding: 54px 48px;
   --card-width: 540px;
   --card-height: 332px;
 
   --icon-size: 48px;
+
+  --font-size-small: 13px;
+  --font-size-large: 28px;
 }
 
 .card {
@@ -51,21 +54,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-weight: 800;
   .card__adviceNumber {
     color: var(--clr-accent-400);
-    font-size: 13px;
+    font-size: var(--font-size-small);
     letter-spacing: 4px;
     text-transform: uppercase;
   }
   .card__adviceQuote {
     width: 100%;
     color: var(--clr-neutral-200);
-    font-size: 28px;
+    font-size: var(--font-size-large);
     letter-spacing: -0.3px;
     line-height: 1.3;
     text-align: center;
+    margin: 0;
+    &::before {
+      content: "“";
+    }
+    &::after {
+      content: "”";
+    }
+  }
+  .card__divider {
+    margin-bottom: 0;
+    &--mobile {
+      display: none;
+    }
   }
   .card__btn {
     --card__btn-width: 64px;
@@ -81,8 +97,32 @@ body {
     &:hover {
       box-shadow: var(--hover-glow);
     }
+    &:active {
+      transform: translateY(5px);
+      transition: transform 50ms ease-in-out;
+    }
   }
 }
-* {
-  // outline: 1px solid magenta;
+
+@media screen and (max-width: 375px) {
+  :root {
+    --card-width: 320px;
+    --card-height: min(400px, 90vh);
+    --padding: 50px 24px;
+    --border-radius: 10px;
+
+    --font-size-small: 11px;
+    --font-size-large: 24px;
+  }
+  body {
+    padding: 15px;
+  }
+  .card__divider {
+    &--desktop {
+      display: none;
+    }
+    &--mobile {
+      display: block !important; // Not good practice, but time to move on.
+    }
+  }
 }

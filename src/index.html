@@ -8,21 +8,22 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link rel="stylesheet" href="./css/styles.css">
-  <script defer src="script.js"></script>
   <title>Frontend Mentor | Advice generator app</title>
+  <script defer src="./script.js"></script>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
 </head>
 
 <body>
   <div class="card">
-    <h2 class="card__adviceNumber">Advice #117</h2>
-    <blockquote class="card__adviceQuote">“It is easy to sit up and take notice, what's difficult is getting up and
-      taking action.”</blockquote>
-    <img class="card__divider" src="./assets/pattern-divider-desktop.svg" alt="">
+    <h2 class="card__adviceNumber">Advice #<span id="card__adviceNumberID">117</span></h2>
+    <blockquote class="card__adviceQuote" id="card__adviceQuote"></blockquote>
+    <img class="card__divider card__divider--desktop" src="./assets/pattern-divider-desktop.svg" alt="">
+    <img class="card__divider card__divider--mobile" src="./assets/pattern-divider-mobile.svg" alt="">
     <button class="card__btn" id="card__btn"><img class="card__btn__dice" src="./assets/icon-dice.svg" alt=""
         srcset=""></button>
   </div>
+
 </body>
 
 </html>
